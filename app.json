@@ -19,12 +19,19 @@
     },
     "android": {
       "adaptiveIcon": {
+        "package": "com.prodibb28.TimbreApp",
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.prodibb28.TimbreApp"
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "0bbe8669-40a2-4e18-9890-3a799ff41c37"
+      }
     }
   }
 }
