@@ -42,11 +42,13 @@ function App() {
     );
   }
   return (
-    <Stack.Navigator
-    screenOptions={{headerShown: false}}>
+    <Stack.Navigator>
       <Stack.Screen 
        name="Home" 
        component={Home} 
+       options={{
+        headerTitleAlign:'center',
+      }}
       /> 
     </Stack.Navigator>
   );
