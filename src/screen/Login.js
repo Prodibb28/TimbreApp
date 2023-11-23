@@ -2,12 +2,13 @@ import React, { useState } from "react"
 import { View, Text, StyleSheet, SafeAreaView, Keyboard } from "react-native"
 import { firebase } from '../config/config'
 import { useNavigation } from "@react-navigation/native";
+
 import Input from "../components/Input.js"
 import Button from "../components/Button.js";
 import Loader from "../components/Loader.js";
 
 
-function Login(){
+const Login= () => {
     const navigation = useNavigation();
     const[inputs, setInputs] = useState({
         email:'',
@@ -57,7 +58,7 @@ function Login(){
     
 
     return(
-        <SafeAreaView style = {styles.mainContainer}>
+        <View style = {styles.mainContainer}>
             <Loader visible={loading}/>
             <View style = {styles.contentContainer}>
                 <Text style = {styles.textTitle}>
@@ -92,7 +93,7 @@ function Login(){
                 onPress={() => navigation.navigate('SingUp')}
                 title='CREAR CUENTA' colorButton="#1976D2"/>
             </View>
-        </SafeAreaView>
+        </View>
     )
 } 
 

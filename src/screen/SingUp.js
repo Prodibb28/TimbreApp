@@ -104,7 +104,7 @@ const SingUp = () => {
 
     
     return(
-        <SafeAreaView style = {styles.mainContainer}>
+        <View style = {styles.mainContainer}>
             <Loader visible={loading}/>
             <Text style = {styles.textTitle}>
                     Registrarse
@@ -176,7 +176,7 @@ const SingUp = () => {
                         title='INICIAR SESIÓN'colorButton="#64B5F6"/>
                 </View>
             </ ScrollView>
-        </SafeAreaView>
+        </View>
     )
 } 
 
