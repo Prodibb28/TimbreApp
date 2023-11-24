@@ -1,6 +1,7 @@
 import React, { useState } from "react"
 import { View, Text, StyleSheet, SafeAreaView, ScrollView, Keyboard } from "react-native"
 import { firebase } from '../config/config'
+import { useNavigation } from "@react-navigation/native";
 
 import Input from "../components/Input.js"
 import Button from "../components/Button.js";
@@ -9,6 +10,7 @@ import Loader from "../components/Loader.js";
 
 
 const SingUp = () => {
+    const navigation = useNavigation();
     const[inputs, setInputs] = useState({
         firstName: '',
         lastName: '',

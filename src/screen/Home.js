@@ -1,5 +1,5 @@
 import React, { useState, useEffect} from 'react';
-import { StyleSheet, View, Button, Text, Switch, Alert,Platform,TouchableOpacity } from 'react-native';
+import { StyleSheet, View, Button, Text, Switch, Alert,Platform,TouchableOpacity,ScrollView  } from 'react-native';
 import { firebase } from '../config/config';
 import DateTimePicker from '@react-native-community/datetimepicker';
 import DropDownPicker from 'react-native-dropdown-picker';
@@ -54,7 +54,7 @@ const Home = () => {
   };
 
   const AlarmsProg = async () => {
-    const alarmsRef = firebase.database().ref('/T02/Alarms/');
+  const alarmsRef = firebase.database().ref('/T02/Alarms/');
   const tAlarmsRef = firebase.database().ref('/T02/Talarms');
 
   const alarmsSnapshot = await alarmsRef.once('value');
@@ -85,6 +85,7 @@ const Home = () => {
         }
       })
       setDataAlarmsPro(alarms)
+      console.log(alarms)
       showT(true);
     }
     else{
@@ -209,25 +210,27 @@ const Home = () => {
         onChange={onChange}
         />)}
       </View>
-      <View style={styles.tableCont}>
-      <Text style={styles.TitleSect}>Timbres Programados</Text>  
-        {showTable &&(<Table  style={{marginVertical:20}} borderStyle={{ borderWidth: 1, borderColor: '#c8e1ff'}}>
-          <Row data={['Hora','T. Timbre' ,'Acción']}  textStyle={styles.text} />
-          <Rows data={DataAlarmsPro.map(alarm => [alarm.hora,alarm.tAlarm, 
-          <TouchableOpacity
-            style={{
-              backgroundColor: 'red', 
-              padding:5,
-              margin: 5,
-              borderRadius: 5,
-            }}
-            onPress={() => handleButtonPress(alarm.key)}
-          >
-            <Text style={{ color: 'white', alignSelf:'center', fontWeight:'900'}}>BORRAR</Text>
-        </TouchableOpacity>
-      ]) }  textStyle={styles.text}/>
-        </Table>)}
-      </View>
+     
+        <ScrollView style={styles.tableCont}>
+        <Text style={styles.TitleSect}>Timbres Programados</Text>  
+          {showTable &&(<Table  style={{marginTop:20, marginBottom:50}} borderStyle={{  borderWidth: 1, borderColor: '#c8e1ff'}}>
+            <Row data={['Hora','T. Timbre' ,'Acción']}  textStyle={styles.text} />
+            <Rows data={DataAlarmsPro.map(alarm => [alarm.hora,alarm.tAlarm, 
+            <TouchableOpacity
+              style={{
+                backgroundColor: 'red', 
+                padding:5,
+                margin: 5,
+                borderRadius: 5,
+              }}
+              onPress={() => handleButtonPress(alarm.key)}
+            >
+              <Text style={{ color: 'white', alignSelf:'center', fontWeight:'900'}}>BORRAR</Text>
+          </TouchableOpacity>
+        ]) }  textStyle={styles.text}/>
+          </Table>)}
+
+        </ScrollView>
     </View>
   );
 };
@@ -265,7 +268,8 @@ const styles = StyleSheet.create({
   },
 
   tableCont:{
-    marginVertical:20,
+    marginTop:20,
+    marginBottom:80,
     marginHorizontal:20,
     borderWidth:1,
     borderRadius:10,
