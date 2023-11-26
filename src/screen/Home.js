@@ -44,13 +44,13 @@ const Home = () => {
     setshowTable(enabled);
   }
 
-  const toggleTimbre = () => {
+  const toggleTimbre= async () =>  {
     setIsEnabled(!isEnabled);
-    firebase.database()
-    .ref('/T02/')
-    .set({
-        State:!isEnabled
-    })
+    const toggleRef = firebase.database().ref('/T02/');
+    await toggleRef.update({
+      State: !isEnabled,
+    });
+   
   };
 
   const AlarmsProg = async () => {
@@ -196,7 +196,8 @@ const Home = () => {
           }}
           dropDownContainerStyle={{
             borderColor:'#D9D9D9',
-            marginVertical:20
+            marginVertical:20,
+           
           }}
       />
       <Button title='Guardar timbre' onPress={() => saveTimbre()}></Button>
@@ -274,7 +275,8 @@ const styles = StyleSheet.create({
     borderWidth:1,
     borderRadius:10,
     padding:20,
-    borderColor:'#D9D9D9'
+    borderColor:'#D9D9D9',
+    zIndex: -1
   },
   DeleteBttn:{
     backgroundColor:'White',

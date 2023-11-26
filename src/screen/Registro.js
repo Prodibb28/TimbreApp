@@ -26,9 +26,9 @@ const Registro = () => {
     const currentTAlarms = tAlarmsSnapshot.val() || {};
       if(currentAlarms){
         const alarms = Object.entries(currentAlarms).map(([key, value]) => {
-          let tempDate = new Date(value)
-          let hora = tempDate.getHours()+':' + tempDate.getMinutes();
-          let date = tempDate.getDay()+'/' + tempDate.getMonth()+'/' + tempDate.getFullYear();
+          let tempDate = new Date(value);
+          let hora = tempDate.getHours() + ':' + tempDate.getMinutes();
+          let date = tempDate.getDate() + '/' + (tempDate.getMonth() + 1) + '/' + tempDate.getFullYear();
           const tAlarmValue = currentTAlarms[key] || '';
   
           // Verificar y asignar el valor deseado
@@ -60,7 +60,7 @@ const Registro = () => {
     <View style={styles.mainContainer}>
       <Text style={styles.TitleSect}>Timbres Activados</Text> 
       <ScrollView style={styles.tableCont}> 
-      {showTable &&(<Table  style={{marginVertical:20}} borderStyle={{ borderWidth: 1, borderColor: '#c8e1ff'}}>
+      {showTable &&(<Table  style={{marginVertical:10}} borderStyle={{ borderWidth: 1, borderColor: '#c8e1ff'}}>
           <Row data={['Hora','Fecha' ,'T. Timbre']}  textStyle={styles.text} />
           <Rows data={DataAlarmsAct.map(alarm => [alarm.hora, alarm.date,alarm.tAlarm ]) }  textStyle={styles.text}/>
         </Table>)}
@@ -94,7 +94,7 @@ const styles = StyleSheet.create({
     marginHorizontal:20,
     borderWidth:1,
     borderRadius:10,
-    padding:20,
+    padding:15,
     borderColor:'#D9D9D9'
   },
 
@@ -110,7 +110,7 @@ const styles = StyleSheet.create({
   },
   text:{
     alignSelf:'center',
-    fontSize:17,
+    fontSize:15,
     fontWeight:600,
     padding:5,
     margin: 5,

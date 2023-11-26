@@ -187,6 +187,7 @@ export default SingUp;
 const styles = StyleSheet.create({
     mainContainer: {
         flex: 1,
+        backgroundColor:'white'
     },
     contentContainer: {
         paddingHorizontal:20

@@ -102,6 +102,7 @@ export default Login;
 const styles = StyleSheet.create({
     mainContainer: {
         flex: 1,
+        backgroundColor:'white'
     },
     contentContainer: {
         paddingTop:70,
